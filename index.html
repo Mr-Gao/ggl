@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<canvas width="250" height="100"></canvas>
+
+</body>
+
+</html>
+<script>
+
+    var c = document.querySelector('canvas');
+    var ctx = c.getContext('2d');
+
+    c.style.background = 'url("1.jpg")';
+
+    ctx.beginPath();
+    ctx.rect(0,0,250,100);
+    ctx.fillStyle = '#ccc';
+    ctx.fill();
+    ctx.closePath();
+
+    c.onmousemove = function (e) {
+        var x = e.x - c.offsetLeft;
+        var y = e.y - c.offsetTop;
+
+        ctx.beginPath();
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.arc(x,y,10,0,2*Math.PI);
+        ctx.fill();
+        ctx.closePath();
+    }
+
+
+
+</script>
